@@ -1,7 +1,16 @@
 parameters:
-#    application_default.example.class: Application\Bundle\Example
+    getonlyimg.menu_builder.class: Application\Bundle\Menu\MenuBuilder
 
 services:
-#    application_default.example:
-#        class: %application_default.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    getonlyimg_main.menu_builder:
+        class: %getonlyimg.menu_builder.class%
+        arguments: ["@knp_menu.factory"]
+
+    getonlyimg_main.menu.main:
+        class: "Knp\Menu\MenuItem" # the service definition requires setting the class
+        factory_service: getonlyimg_main.menu_builder
+        factory_method: createMainMenu
+        arguments: ["@request"]
+        scope: request # needed as we have the request as a dependency here
+        tags:
+            - { name: knp_menu.menu, alias: main }

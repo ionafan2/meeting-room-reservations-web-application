@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Room Reservation{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="{{ asset('js/jquery.js') }}"><\/script>')</script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+
+    {% block menu %}
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="brand" href="{{ path('application_default_homepage') }}">Reserv</a>
+                    {{ knp_menu_render('main') }}
+                </div>
+            </div>
+        </div>
+
+    {% endblock %} <!-- EOF Menu-->
+
+    <div class="container">
+        <div class="hero-unit">
+            {% include 'BcBootstrapBundle::flash.html.twig' with { 'close': true } %}
+            {% block content %} {% endblock %}
+        </div>
+    </div>
+    <div class="footer_wrap margin10top">
+            <div class="container">
+                <div class="row">
+                    <span class="span4">&#169; All rights reserved. </span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
