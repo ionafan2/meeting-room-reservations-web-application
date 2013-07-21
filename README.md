@@ -1,4 +1,2 @@
-meeting-room-reservations-web-application
-=========================================
-
-meeting room reservations
+Web application fro meeting room reservations
+=============================================
